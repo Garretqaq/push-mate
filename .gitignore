@@ -36,3 +36,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/push-app/src/main/resources/application-dev.yml

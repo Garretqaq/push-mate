@@ -1,10 +1,10 @@
-package com.dato.pushapp;
+package com.dato.push.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PushAppApplicationTests {
+public class PushAppApplicationTests {
 
     @Test
     void contextLoads() {
