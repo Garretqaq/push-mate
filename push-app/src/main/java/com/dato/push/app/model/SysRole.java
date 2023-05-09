@@ -1,7 +1,10 @@
 package com.dato.push.app.model;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import com.mybatisflex.annotation.Column;
+import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,10 +12,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Table(name = "sys_role")
+@Table("sys_role")
 public class SysRole {
     @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     private String name;
@@ -20,7 +22,7 @@ public class SysRole {
     /**
      * 角色权限字符串
      */
-    @Column(name = "role_key")
+    @Column("role_key")
     private String roleKey;
 
     /**
@@ -28,7 +30,7 @@ public class SysRole {
      */
     private Boolean status;
 
-    @Column(name = "create_time")
+    @Column("create_time")
     private Date createTime;
 
     /**
