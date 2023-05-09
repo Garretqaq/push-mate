@@ -37,3 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 /push-app/src/main/resources/application-dev.yml
+/.idea/workspace.xml
+/push-app/src/main/resources/generator/config.properties

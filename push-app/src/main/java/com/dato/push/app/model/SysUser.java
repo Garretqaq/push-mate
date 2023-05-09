@@ -41,6 +41,11 @@ public class SysUser implements Serializable {
     private String password;
 
     /**
+     * 用户角色key | 多个以逗号分割
+     */
+    private String roleKeys;
+
+    /**
      * 创建时间
      */
     private Date creatTime;
