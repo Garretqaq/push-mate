@@ -39,3 +39,6 @@ build/
 
 ### maven ###
 /push-app/.mvn
+
+### rebel ###
+/push-app/src/main/resources/rebel.xml
