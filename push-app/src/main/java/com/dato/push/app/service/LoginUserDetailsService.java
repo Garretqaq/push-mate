@@ -9,7 +9,6 @@ import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysMenuMapper;
 import com.dato.push.app.mapper.SysRoleMapper;
 import com.dato.push.app.mapper.SysRoleMenuMapper;
-import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;

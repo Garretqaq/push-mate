@@ -50,4 +50,9 @@ public class SysUser implements Serializable {
      * 创建时间
      */
     private Date creatTime;
+
+    /**
+     * 是否开启 | false:未开启 true:开启
+     */
+    private Boolean enable;
 }

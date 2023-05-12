@@ -1,5 +1,6 @@
 package com.dato.push.app.config;
 
+import com.dato.push.app.service.LoginUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +26,9 @@ public class SecurityConfig {
     @Resource
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
+    @Resource
+    private LoginUserDetailsService loginUserDetailsService;
+
     private AuthenticationEntryPoint authenticationEntryPoint;
 
     private AccessDeniedHandler accessDeniedHandler;
@@ -39,14 +43,13 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 // 对于登录接口 允许匿名访问
-                .antMatchers("/user/login").anonymous()
-                .antMatchers("/testCors").hasAuthority("system:dept:list211")
+//                .antMatchers("/user/login", "/static/**").permitAll()
+                .antMatchers("/**").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
         //将jwtAuthenticationTokenFilter过滤器放到登录认证之前
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-
         //配置异常处理器
 //        http.exceptionHandling()
 //                //认证失败处理器
@@ -66,12 +69,7 @@ public class SecurityConfig {
     @Bean
     AuthenticationManager authenticationManager(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(new UserDetailsService() {
-                    @Override
-                    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                        return null;
-                    }
-                })
+                .userDetailsService(loginUserDetailsService)
                 .passwordEncoder(passwordEncoder())
                 .and()
                 .build();

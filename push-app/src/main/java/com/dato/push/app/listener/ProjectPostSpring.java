@@ -6,6 +6,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
  **/
 @Component
 @Slf4j
-public class ProjectProcessSpring implements ApplicationContextAware {
+public class ProjectPostSpring implements ApplicationContextAware {
 
     @Value(("${admin.account}"))
     private String account;
@@ -27,11 +28,13 @@ public class ProjectProcessSpring implements ApplicationContextAware {
     private String password;
     @Resource
     private SysUserService sysUserService;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         // 初始化管理员账号密码
-        sysUserService.initAdmin(account, password);
+        sysUserService.initAdmin(account, password, passwordEncoder);
         log.info("初始化管理员密码完成======账号：{},密码：{}", account, password);
     }
 }

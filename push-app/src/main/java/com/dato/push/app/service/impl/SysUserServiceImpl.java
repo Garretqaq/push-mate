@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Objects;
 
 import static com.dato.push.app.dao.table.Tables.SYS_USER;
@@ -21,10 +22,8 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
-    @Resource
-    private PasswordEncoder passwordEncoder;
     @Override
-    public void initAdmin(String account, String password) {
+    public void initAdmin(String account, String password, PasswordEncoder passwordEncoder) {
         QueryWrapper query = QueryWrapper.create();
         query.where(SYS_USER.ACCOUNT.eq(account));
         SysUser sysUser = sysUserMapper.selectOneByQuery(query);
@@ -35,6 +34,7 @@ public class SysUserServiceImpl implements SysUserService {
             sysUser.setAccount(account);
             sysUser.setPassword(passwordEncoder.encode(password));
             sysUser.setRoleKeys("admin");
+            sysUser.setCreatTime(new Date());
             sysUserMapper.insert(sysUser);
         }else {
             // 更新

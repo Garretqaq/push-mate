@@ -1,6 +1,7 @@
 package com.dato.push.app.service;
 
 import com.dato.push.app.dao.SysUser;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 用户接口
@@ -8,10 +9,12 @@ import com.dato.push.app.dao.SysUser;
 public interface SysUserService {
     /**
      * 初始化管理员
-     * @param account 账户
-     * @param password 密码
+     *
+     * @param account         账户
+     * @param password        密码
+     * @param passwordEncoder 密码加密器
      */
-    void initAdmin(String account, String password);
+    void initAdmin(String account, String password, PasswordEncoder passwordEncoder);
 
     /**
      * 根据用户名获取用户实体

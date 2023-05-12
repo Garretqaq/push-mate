@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 /**
  * 登录控制层
  */
-@RestController()
+@RestController
 @RequestMapping("/user")
 public class LoginUserController {
 
@@ -20,7 +20,7 @@ public class LoginUserController {
     /**
      * 登录接口
      */
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseResult<String> login(@RequestBody LoginUserRequest request){
         return loginService.login(request);
     }
@@ -28,7 +28,7 @@ public class LoginUserController {
     /**
      * 登出接口
      */
-    @GetMapping("loginOut")
+    @GetMapping("/loginOut")
     public ResponseResult<?> register(){
         return loginService.loginOut();
     }
@@ -36,9 +36,18 @@ public class LoginUserController {
     /**
      * 注册接口
      */
-    @PreAuthorize("hasAnyAuthority('admin')")
-    @PostMapping("register")
+    @PreAuthorize("hasAnyRole('admin')")
+    @PostMapping("/register")
     public ResponseResult<?> loginOut(@RequestBody LoginUserRequest request){
         return loginService.register(request);
+    }
+
+    /**
+     * 测试接口
+     */
+    @PreAuthorize("hasRole('admin')")
+    @GetMapping("/test")
+    public ResponseResult<?> test(){
+        return ResponseResult.createSuccess();
     }
 }

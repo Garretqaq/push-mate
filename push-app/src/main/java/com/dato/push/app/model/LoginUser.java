@@ -1,13 +1,16 @@
 package com.dato.push.app.model;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 登录验证实体类
@@ -46,9 +49,22 @@ public class LoginUser implements UserDetails {
      */
     private List<String> permission;
 
+    /**
+     * 是否开启 | false:未开启 true:开启
+     */
+    private Boolean enable;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList(permission.toArray(new String[0]));
+        List<String> authorities;
+        // 角色
+        List<String> roleList = StrUtil.split(roleKeys, ",");
+        authorities = roleList.stream().map(item -> "ROLE_" + item).collect(Collectors.toList());
+
+        if (!CollectionUtils.isEmpty(permission)){
+            authorities.addAll(permission);
+        }
+        return AuthorityUtils.createAuthorityList(authorities.toArray(new String[0]));
     }
 
     @Override
@@ -63,21 +79,21 @@ public class LoginUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enable;
     }
 }
