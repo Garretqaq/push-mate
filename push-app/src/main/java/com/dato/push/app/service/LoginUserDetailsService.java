@@ -28,10 +28,13 @@ import java.util.stream.Collectors;
 
 import static com.dato.push.app.dao.table.Tables.*;
 
+/**
+ * 用户信息实现加载类
+ */
 @Component
 public class LoginUserDetailsService implements UserDetailsService {
     @Resource
-    private SysUserMapper sysUserMapper;
+    private SysUserService sysUserService;
     @Resource
     private SysRoleMapper sysRoleMapper;
     @Resource
@@ -40,9 +43,7 @@ public class LoginUserDetailsService implements UserDetailsService {
     private SysMenuMapper sysMenuMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        QueryWrapper query = QueryWrapper.create();
-        query.where(SYS_USER.ACCOUNT.eq(username));
-        SysUser sysUser = sysUserMapper.selectOneByQuery(query);
+        SysUser sysUser = sysUserService.getUserByAccount(username);
         LoginUser loginUser = BeanUtil.copyProperties(sysUser, LoginUser.class);
 
         // 获取角色key

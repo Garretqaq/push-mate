@@ -10,6 +10,10 @@ mybatis-flex:
     enable: true
     mappersGenerateEnable: true
 
+# 管理员配置
+admin:
+  account: admin
+  password: 123456
 ##数据源配置
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
