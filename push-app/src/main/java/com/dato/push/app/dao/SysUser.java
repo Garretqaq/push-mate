@@ -1,4 +1,4 @@
-package com.dato.push.app.model;
+package com.dato.push.app.dao;
 
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.KeyType;
@@ -44,6 +44,11 @@ public class SysUser implements Serializable {
      * 用户角色key | 多个以逗号分割
      */
     private String roleKeys;
+
+    /**
+     * 权限 | 多个以逗号分割
+     */
+    private String permission;
 
     /**
      * 创建时间

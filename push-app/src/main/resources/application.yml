@@ -5,6 +5,11 @@ spring:
   profiles:
     active: dev
 
+mybatis-flex:
+  processor:
+    enable: true
+    mappersGenerateEnable: true
+
 ##数据源配置
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver

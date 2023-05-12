@@ -1,4 +1,4 @@
-package com.dato.push.app.model;
+package com.dato.push.app.dao;
 
 
 import com.mybatisflex.annotation.Column;

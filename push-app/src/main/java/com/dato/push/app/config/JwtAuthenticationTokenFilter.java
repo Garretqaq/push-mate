@@ -1,5 +1,8 @@
 package com.dato.push.app.config;
 
+import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.utils.JwtTokenUtil;
+import com.dato.push.app.utils.LRUCacheUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -24,17 +27,19 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        //解析token
-        String userid;
+        // 校验token
+        JwtTokenUtil.verify(token);
 
+        // 解析token
+        Integer userId = JwtTokenUtil.parseToken(token);
+        // 获取用户信息
+        LoginUser loginUser = LRUCacheUtil.getLoginUser(userId);
 
         //封装Authentication对象存入SecurityContextHolder
-        //TODO 获取权限信息封装到Authentication中
-//
-//        UsernamePasswordAuthenticationToken authenticationToken =
-//               new UsernamePasswordAuthenticationToken(loginUser,null,null);
-//
-//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        UsernamePasswordAuthenticationToken authenticationToken =
+               new UsernamePasswordAuthenticationToken(loginUser,null,null);
+
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         //放行
         filterChain.doFilter(request, response);
     }
