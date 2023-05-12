@@ -36,3 +36,6 @@ build/
 /push-app/src/main/resources/application-dev.yml
 /.idea/workspace.xml
 /push-app/src/main/resources/generator/config.properties
+
+### maven ###
+/push-app/.mvn
