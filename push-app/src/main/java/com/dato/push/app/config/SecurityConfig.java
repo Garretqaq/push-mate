@@ -25,10 +25,8 @@ public class SecurityConfig {
     @Resource
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
-    @Resource
     private AuthenticationEntryPoint authenticationEntryPoint;
 
-    @Resource
     private AccessDeniedHandler accessDeniedHandler;
 
     @Bean
@@ -50,10 +48,10 @@ public class SecurityConfig {
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         //配置异常处理器
-        http.exceptionHandling()
-                //认证失败处理器
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .accessDeniedHandler(accessDeniedHandler);
+//        http.exceptionHandling()
+//                //认证失败处理器
+//                .authenticationEntryPoint(authenticationEntryPoint)
+//                .accessDeniedHandler(accessDeniedHandler);
 
         //允许跨域
         http.cors();
