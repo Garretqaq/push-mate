@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 登录验证实体类
@@ -38,11 +39,16 @@ public class LoginUser implements UserDetails {
     /**
      * 用户角色key | 多个以逗号分割
      */
-    private String roleKeys = "";
+    private String roleKeys;
+
+    /**
+     * 权限集合
+     */
+    private List<String> permission;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList(roleKeys);
+        return AuthorityUtils.createAuthorityList(permission.toArray(new String[0]));
     }
 
     @Override

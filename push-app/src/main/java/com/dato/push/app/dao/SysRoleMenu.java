@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * 角色菜单关系表
+ * @author sgz
+ */
 @Getter
 @Setter
 @ToString

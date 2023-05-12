@@ -2,9 +2,11 @@ package com.dato.push.app.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysRole;
 import com.dato.push.app.dao.SysRoleMenu;
 import com.dato.push.app.dao.SysUser;
+import com.dato.push.app.mapper.SysMenuMapper;
 import com.dato.push.app.mapper.SysRoleMapper;
 import com.dato.push.app.mapper.SysRoleMenuMapper;
 import com.dato.push.app.mapper.SysUserMapper;
@@ -20,7 +22,9 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.dato.push.app.dao.table.Tables.*;
 
@@ -32,6 +36,8 @@ public class LoginUserDetailsService implements UserDetailsService {
     private SysRoleMapper sysRoleMapper;
     @Resource
     private SysRoleMenuMapper sysRoleMenuMapper;
+    @Resource
+    private SysMenuMapper sysMenuMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper query = QueryWrapper.create();
@@ -54,7 +60,7 @@ public class LoginUserDetailsService implements UserDetailsService {
         }
 
         // 权限id集合
-        List<Long> roleIdList = sysRoles.stream().map(SysRole::getId).toList();
+        List<Long> roleIdList = sysRoles.stream().map(SysRole::getId).collect(Collectors.toList());
         // 获取菜单id
         QueryWrapper query2 = QueryWrapper.create();
         query2.where(SYS_ROLE_MENU.ROLE_ID.in(roleIdList));
@@ -62,7 +68,27 @@ public class LoginUserDetailsService implements UserDetailsService {
         if (CollectionUtils.isEmpty(sysRoleMenus)){
             return loginUser;
         }
-        sysRoleMenus.stream().map(SysRoleMenu::getMenuId)
-        return null;
+        List<Long> meauIdList = sysRoleMenus.stream().map(SysRoleMenu::getMenuId).collect(Collectors.toList());
+
+        // 获取菜单对应的权限
+        QueryWrapper query3 = QueryWrapper.create();
+        query3.where(SYS_MENU.ID.in(meauIdList));
+        List<SysMenu> sysMenuList = sysMenuMapper.selectListByQuery(query3);
+        if (CollectionUtils.isEmpty(sysMenuList)){
+            return loginUser;
+        }
+
+        List<String> permissionList = new ArrayList<>();
+        for (SysMenu sysMenu : sysMenuList) {
+            String perms = sysMenu.getPerms();
+            if (StringUtils.isNotBlank(perms)){
+                // 获取菜单所需要的权限
+                List<String> permsList = StrUtil.split(perms, ",");
+                permissionList.addAll(permsList);
+            }
+        }
+
+        loginUser.setPermission(permissionList);
+        return loginUser;
     }
 }

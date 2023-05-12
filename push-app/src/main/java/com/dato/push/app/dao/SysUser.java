@@ -45,10 +45,6 @@ public class SysUser implements Serializable {
      */
     private String roleKeys;
 
-    /**
-     * 权限 | 多个以逗号分割
-     */
-    private String permission;
 
     /**
      * 创建时间
