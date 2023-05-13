@@ -47,7 +47,6 @@ public class LoginUserController {
     /**
      * 测试接口
      */
-    @PreAuthorize("hasRole('admin')")
     @GetMapping("/test")
     public ResponseResult<?> test(){
         return ResponseResult.createSuccess();

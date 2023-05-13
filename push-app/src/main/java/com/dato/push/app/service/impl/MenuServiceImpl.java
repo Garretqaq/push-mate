@@ -1,5 +1,6 @@
 package com.dato.push.app.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysRoleMenu;
 import com.dato.push.app.dao.table.Tables;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.dato.push.app.dao.table.Tables.SYS_MENU;
 
 /**
  * 菜单实现类
@@ -42,5 +45,16 @@ public class MenuServiceImpl implements MenuService {
             String roleKey = roleService.getRoleKey(item.getRoleId());
             return "ROLE_" + roleKey;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public SysMenu getMenuByPath(String path) {
+        if (StrUtil.isBlank(path)){
+            return null;
+        }
+
+        QueryWrapper query = QueryWrapper.create();
+        query.where(SYS_MENU.PATH.eq(path));
+        return sysMenuMapper.selectOneByQuery(query);
     }
 }

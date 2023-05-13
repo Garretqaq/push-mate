@@ -22,4 +22,10 @@ public interface MenuService {
      * @return 角色集合，带前缀ROLE_
      */
     List<String> getRolesByMenuId(Integer id);
+
+    /**
+     * 通过path获取菜单
+     * @return 菜单
+     */
+    SysMenu getMenuByPath(String path);
 }

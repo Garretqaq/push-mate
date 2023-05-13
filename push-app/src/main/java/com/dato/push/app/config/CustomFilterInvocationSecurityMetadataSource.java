@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *  URL 路径和权限之间的关系配置类
@@ -26,26 +27,24 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
     @Resource
     private MenuService menuService;
 
-
-    private final AntPathMatcher antPathMatcher = new AntPathMatcher();
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
-        List<SysMenu> menus = menuService.getAllMenus();
-        for (SysMenu menu : menus) {
-            if (antPathMatcher.match(menu.getPath(), requestUrl)) {
-                List<String> permAndRole = new ArrayList<>();
+        SysMenu menu = menuService.getMenuByPath(requestUrl);
 
-                // 菜单所需要的权限
-                String perms = menu.getPerms();
-                if (StrUtil.isNotBlank(perms)){
-                    permAndRole.addAll(StrUtil.split(perms, ","));
-                }
-
-                return SecurityConfig.createList(permAndRole.toArray(new String[0]));
-            }
+        if (Objects.isNull(menu)){
+            return null;
         }
-        return null;
+
+        List<String> permAndRole = new ArrayList<>();
+
+        // 菜单所需要的权限
+        String perms = menu.getPerms();
+        if (StrUtil.isNotBlank(perms)){
+            permAndRole.addAll(StrUtil.split(perms, ","));
+        }
+
+        return SecurityConfig.createList(permAndRole.toArray(new String[0]));
     }
 
     @Override
