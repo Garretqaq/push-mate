@@ -4,9 +4,10 @@ import com.dato.push.app.control.ResponseResult;
 import com.dato.push.app.exception.TokenParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.servlet.ServletException;
 
 /**
  * 异常统一处理类
@@ -24,6 +25,12 @@ public class GlobalExceptionHandler {
     public ResponseResult<String> handleException(BadCredentialsException ex) {
         return ResponseResult.createError(ex.getMessage());
     }
+
+    @ExceptionHandler(ServletException.class)
+    public ResponseResult<String> handleException(ServletException ex) {
+        return ResponseResult.createError(ex.getMessage());
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseResult<String> handleException(Exception ex) {
         log.error("接口异常，异常信息", ex);

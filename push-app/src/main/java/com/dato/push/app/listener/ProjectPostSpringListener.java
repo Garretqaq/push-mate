@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  **/
 @Component
 @Slf4j
-public class ProjectPostSpring implements ApplicationContextAware {
+public class ProjectPostSpringListener implements ApplicationContextAware {
 
     @Value(("${admin.account}"))
     private String account;

@@ -1,14 +1,18 @@
 package com.dato.push.app.utils;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.crypto.KeyUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.crypto.asymmetric.SignAlgorithm;
 import cn.hutool.jwt.JWT;
-import cn.hutool.jwt.signers.AlgorithmUtil;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import com.dato.push.app.exception.TokenParseException;
 import com.dato.push.app.model.LoginUser;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.security.KeyPair;
 import java.util.Date;
 
 
@@ -18,9 +22,27 @@ import java.util.Date;
  */
 public class JwtTokenUtil {
 
-    private static final JWTSigner SIGNER = JWTSignerUtil.createSigner("rs256",
-            // 随机生成密钥对，此处用户可自行读取`KeyPair`、公钥或私钥生成`JWTSigner`
-            KeyUtil.generateKeyPair(AlgorithmUtil.getAlgorithm("rs256")));
+    private static final JWTSigner SIGNER;
+
+    private static KeyPair keyPair;
+
+    static {
+        // 初始密钥对
+        initKeyPair();
+        SIGNER = JWTSignerUtil.createSigner(SignAlgorithm.SHA256withRSA.getValue(), keyPair);
+    }
+
+    private static void initKeyPair() {
+        try {
+            InputStream stream = ResourceUtil.getStream("key_pair.dat");
+            ObjectInputStream ois = new ObjectInputStream(stream);
+            keyPair = (KeyPair) ois.readObject();
+            ois.close();
+            stream.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 生成token
