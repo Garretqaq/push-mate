@@ -1,6 +1,6 @@
 package com.dato.push.app.listener;
 
-import com.dato.push.app.service.SysUserService;
+import com.dato.push.app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,14 +27,14 @@ public class ProjectPostSpringListener implements ApplicationContextAware {
     @Value("${admin.password}")
     private String password;
     @Resource
-    private SysUserService sysUserService;
+    private UserService userService;
     @Resource
     private PasswordEncoder passwordEncoder;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         // 初始化管理员账号密码
-        sysUserService.initAdmin(account, password, passwordEncoder);
+        userService.initAdmin(account, password, passwordEncoder);
         log.info("初始化管理员密码完成======账号：{},密码：{}", account, password);
     }
 }

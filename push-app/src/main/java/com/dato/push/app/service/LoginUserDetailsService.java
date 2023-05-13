@@ -33,7 +33,7 @@ import static com.dato.push.app.dao.table.Tables.*;
 @Component
 public class LoginUserDetailsService implements UserDetailsService {
     @Resource
-    private SysUserService sysUserService;
+    private UserService userService;
     @Resource
     private SysRoleMapper sysRoleMapper;
     @Resource
@@ -42,7 +42,7 @@ public class LoginUserDetailsService implements UserDetailsService {
     private SysMenuMapper sysMenuMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser sysUser = sysUserService.getUserByAccount(username);
+        SysUser sysUser = userService.getUserByAccount(username);
         LoginUser loginUser = BeanUtil.copyProperties(sysUser, LoginUser.class);
 
         // 获取角色key

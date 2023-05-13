@@ -2,7 +2,7 @@ package com.dato.push.app.service.impl;
 
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysUserMapper;
-import com.dato.push.app.service.SysUserService;
+import com.dato.push.app.service.UserService;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import static com.dato.push.app.dao.table.Tables.SYS_USER;
  * @author sgz
  */
 @Service
-public class SysUserServiceImpl implements SysUserService {
+public class UserServiceImpl implements UserService {
 
     @Resource
     private SysUserMapper sysUserMapper;

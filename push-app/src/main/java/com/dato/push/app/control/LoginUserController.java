@@ -29,7 +29,7 @@ public class LoginUserController {
      * 登出接口
      */
     @GetMapping("/loginOut")
-    public ResponseResult<?> register(){
+    public ResponseResult<?> loginOut(){
         return loginService.loginOut();
     }
 
@@ -38,7 +38,7 @@ public class LoginUserController {
      */
     @PreAuthorize("hasAnyRole('admin')")
     @PostMapping("/register")
-    public ResponseResult<?> loginOut(@RequestBody LoginUserRequest request){
+    public ResponseResult<?> register(@RequestBody LoginUserRequest request){
         return loginService.register(request);
     }
 

@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * 用户接口
  */
-public interface SysUserService {
+public interface UserService {
     /**
      * 初始化管理员
      *

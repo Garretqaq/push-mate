@@ -7,6 +7,7 @@ import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.service.LoginService;
+import com.dato.push.app.service.RoleService;
 import com.dato.push.app.utils.JwtTokenUtil;
 import com.dato.push.app.utils.LRUCacheUtil;
 import com.mybatisflex.core.query.QueryWrapper;
@@ -29,6 +30,9 @@ public class LoginServiceImpl implements LoginService {
     private SysUserMapper sysUserMapper;
     @Resource
     private PasswordEncoder passwordEncoder;
+    @Resource
+    private RoleService roleService;
+
     @Override
     public ResponseResult<String> login(LoginUserRequest request) {
         //通过UsernamePasswordAuthenticationToken获取用户名和密码
@@ -79,6 +83,7 @@ public class LoginServiceImpl implements LoginService {
         sysUser = new SysUser();
         sysUser.setAccount(request.getAccount());
         sysUser.setName(request.getName());
+        sysUser.setRoleKeys(roleService.getRoleKey(1));
         sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
 
         sysUserMapper.insert(sysUser);
