@@ -6,6 +6,7 @@ import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
 import com.dato.push.app.model.req.LoginUserRequest;
+import com.dato.push.app.model.req.RegisterRequest;
 import com.dato.push.app.service.LoginService;
 import com.dato.push.app.service.RoleService;
 import com.dato.push.app.utils.JwtTokenUtil;
@@ -65,7 +66,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public ResponseResult<?> register(LoginUserRequest request) {
+    public ResponseResult<?> register(RegisterRequest request) {
         String account = request.getAccount();
         String password = request.getPassword();
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
@@ -85,6 +86,7 @@ public class LoginServiceImpl implements LoginService {
         sysUser.setName(request.getName());
         sysUser.setRoleKeys(roleService.getRoleKey(1));
         sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
+        sysUser.setEnable(true);
 
         sysUserMapper.insert(sysUser);
         return ResponseResult.createSuccess();

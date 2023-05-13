@@ -76,12 +76,12 @@ public class JwtTokenUtil {
         JWT jwt = JWT.of(token).setSigner(SIGNER);
         boolean verify = jwt.verify();
         if (!verify){
-            throw new TokenParseException("Token无效");
+            throw TokenParseException.invalid();
         }
 
         Long expireTimestamp = jwt.getPayloads().getLong("exp");
         if (System.currentTimeMillis() > expireTimestamp){
-            throw new TokenParseException("Token已过期");
+            throw TokenParseException.expired();
         }
 
     }

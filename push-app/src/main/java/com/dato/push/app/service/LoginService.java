@@ -2,6 +2,7 @@ package com.dato.push.app.service;
 
 import com.dato.push.app.control.ResponseResult;
 import com.dato.push.app.model.req.LoginUserRequest;
+import com.dato.push.app.model.req.RegisterRequest;
 
 /**
  * 登录接口
@@ -28,5 +29,5 @@ public interface LoginService {
      * @param request 请求对象
      * @return 注册结果
      */
-    ResponseResult<?> register(LoginUserRequest request);
+    ResponseResult<?> register(RegisterRequest request);
 }

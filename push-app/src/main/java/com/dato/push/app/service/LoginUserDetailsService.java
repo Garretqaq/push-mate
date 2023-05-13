@@ -6,6 +6,7 @@ import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysRole;
 import com.dato.push.app.dao.SysRoleMenu;
 import com.dato.push.app.dao.SysUser;
+import com.dato.push.app.exception.UnregisteredException;
 import com.dato.push.app.mapper.SysMenuMapper;
 import com.dato.push.app.mapper.SysRoleMapper;
 import com.dato.push.app.mapper.SysRoleMenuMapper;
@@ -23,6 +24,7 @@ import javax.annotation.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.dato.push.app.dao.table.Tables.*;
@@ -44,6 +46,10 @@ public class LoginUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser sysUser = userService.getUserByAccount(username);
         LoginUser loginUser = BeanUtil.copyProperties(sysUser, LoginUser.class);
+
+        if (Objects.isNull(loginUser)){
+            throw UnregisteredException.noRegister();
+        }
 
         // 获取角色key
         String roleKeys = loginUser.getRoleKeys();

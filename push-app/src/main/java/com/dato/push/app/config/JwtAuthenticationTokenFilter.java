@@ -57,7 +57,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             return;
         } catch (Exception e){
             handlerExceptionResolver.resolveException(request, response,
-                    null, new TokenParseException("Token校验失败"));
+                    null, TokenParseException.fail());
             return;
         }
 

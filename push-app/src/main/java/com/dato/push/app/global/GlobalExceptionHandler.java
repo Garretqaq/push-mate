@@ -5,11 +5,14 @@ import com.dato.push.app.exception.TokenParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.ServletException;
 import java.nio.file.AccessDeniedException;
+import java.util.Objects;
 
 /**
  * 异常统一处理类
@@ -48,6 +51,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = AuthenticationException.class)
     public ResponseResult<String> handleException(AuthenticationException e){
         return ResponseResult.createError("身份验证异常, 请向管理员申请");
+    }
+
+    /**
+     * 处理参数校验异常
+     */
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResponseResult<String> handleException(MethodArgumentNotValidException e){
+        String defaultMessage;
+
+        FieldError fieldError = e.getBindingResult().getFieldError();
+        if (Objects.nonNull(fieldError)){
+            defaultMessage = fieldError.getDefaultMessage();
+        }else {
+            defaultMessage = e.getMessage();
+        }
+        return ResponseResult.createError(defaultMessage);
     }
 
     @ExceptionHandler(Exception.class)
