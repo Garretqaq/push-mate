@@ -1,8 +1,9 @@
-package com.dato.push.app.global;
+package com.dato.push.app.handle;
 
 import com.dato.push.app.control.ResponseResult;
 import com.dato.push.app.exception.TokenParseException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.ServletException;
-import java.nio.file.AccessDeniedException;
 import java.util.Objects;
 
 /**
@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = AccessDeniedException.class)
     public ResponseResult<String> handleException(AccessDeniedException e){
-        return ResponseResult.createError("拒绝访问该接口, 请向管理员申请");
+        return ResponseResult.createError("拒绝访问该接口, 请向管理员申请权限");
     }
 
     /**
