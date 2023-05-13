@@ -66,7 +66,7 @@ public class LoginUserDetailsService implements UserDetailsService {
         }
 
         // 权限id集合
-        List<Long> roleIdList = sysRoles.stream().map(SysRole::getId).collect(Collectors.toList());
+        List<Integer> roleIdList = sysRoles.stream().map(SysRole::getId).collect(Collectors.toList());
         // 获取菜单id
         QueryWrapper query2 = QueryWrapper.create();
         query2.where(SYS_ROLE_MENU.ROLE_ID.in(roleIdList));
@@ -74,7 +74,7 @@ public class LoginUserDetailsService implements UserDetailsService {
         if (CollectionUtils.isEmpty(sysRoleMenus)){
             return loginUser;
         }
-        List<Long> meauIdList = sysRoleMenus.stream().map(SysRoleMenu::getMenuId).collect(Collectors.toList());
+        List<Integer> meauIdList = sysRoleMenus.stream().map(SysRoleMenu::getMenuId).collect(Collectors.toList());
 
         // 获取菜单对应的权限
         QueryWrapper query3 = QueryWrapper.create();

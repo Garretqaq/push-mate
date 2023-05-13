@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled =true) //开启授权注解功能
-public class SecurityConfig {
+public class SpringSecurityConfig {
     @Resource
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 

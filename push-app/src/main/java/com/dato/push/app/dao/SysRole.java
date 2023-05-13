@@ -15,7 +15,7 @@ import lombok.ToString;
 @Table("sys_role")
 public class SysRole {
     @Id
-    private Long id;
+    private Integer id;
 
     private String name;
 

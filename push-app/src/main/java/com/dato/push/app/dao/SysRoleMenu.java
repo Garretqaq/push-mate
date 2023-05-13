@@ -20,11 +20,11 @@ public class SysRoleMenu {
      * 角色ID
      */
     @Column("role_id")
-    private Long roleId;
+    private Integer roleId;
 
     /**
      * 菜单id
      */
     @Column("menu_id")
-    private Long menuId;
+    private Integer menuId;
 }

@@ -15,7 +15,7 @@ import lombok.ToString;
 @Table("sys_menu")
 public class SysMenu {
     @Id
-    private Long id;
+    private Integer id;
 
     /**
      * 菜单名
