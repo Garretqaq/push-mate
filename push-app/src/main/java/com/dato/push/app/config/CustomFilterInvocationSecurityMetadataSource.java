@@ -1,6 +1,5 @@
 package com.dato.push.app.config;
 
-import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.service.MenuService;
@@ -9,7 +8,6 @@ import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.AntPathMatcher;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;

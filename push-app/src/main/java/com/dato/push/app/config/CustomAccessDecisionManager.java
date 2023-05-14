@@ -15,38 +15,41 @@ import java.util.Collection;
 @Component
 public class CustomAccessDecisionManager implements AccessDecisionManager {
 
-  @Override
-  public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-    if (CollectionUtil.isEmpty(configAttributes)){
-      return;
-    }
-
-    // 权限判断逻辑
-    for (ConfigAttribute attribute : configAttributes) {
-      String permission = attribute.getAttribute();
-      // 为空则不需要权限直接返回
-      if (StrUtil.isBlank(permission)){
-        return;
-      }
-
-      Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-      for (GrantedAuthority authority : authorities) {
-        if (authority.getAuthority().equals(permission)){
-          return;
+    @Override
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
+        if (CollectionUtil.isEmpty(configAttributes)) {
+            return;
         }
-      }
+
+
+        // 权限判断逻辑
+        for (ConfigAttribute attribute : configAttributes) {
+            String permission = attribute.getAttribute();
+            // 为空则不需要权限直接返回
+            if (StrUtil.isBlank(permission)) {
+                return;
+            }
+
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+            for (GrantedAuthority authority : authorities) {
+                if (authority.getAuthority().equals(permission)) {
+                    return;
+                }
+            }
+
+        }
+
+        throw new AccessDeniedException("Access is denied");
     }
 
-    throw new AccessDeniedException("Access is denied");
-  }
 
-  @Override
-  public boolean supports(ConfigAttribute attribute) {
-    return true;
-  }
+    @Override
+    public boolean supports(ConfigAttribute attribute) {
+        return true;
+    }
 
-  @Override
-  public boolean supports(Class<?> clazz) {
-    return true;
-  }
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return true;
+    }
 }
