@@ -1,6 +1,6 @@
 package com.dato.push.app.service.impl;
 
-import com.dato.push.app.control.ResponseResult;
+import com.dato.push.app.controller.ResponseResult;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.mapper.SysUserMapper;

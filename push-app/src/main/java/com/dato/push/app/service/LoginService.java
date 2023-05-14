@@ -1,6 +1,6 @@
 package com.dato.push.app.service;
 
-import com.dato.push.app.control.ResponseResult;
+import com.dato.push.app.controller.ResponseResult;
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
 

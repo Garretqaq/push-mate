@@ -1,4 +1,4 @@
-package com.dato.push.app.control;
+package com.dato.push.app.controller;
 
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
