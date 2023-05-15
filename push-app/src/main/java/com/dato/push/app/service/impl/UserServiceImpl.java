@@ -9,6 +9,8 @@ import com.dato.push.app.model.LoginUser;
 import com.dato.push.app.model.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.MenuService;
 import com.dato.push.app.service.intf.UserService;
+import com.dato.push.app.utils.CommonUtil;
+import com.dato.push.app.utils.LRUCacheUtil;
 import com.dato.push.app.utils.UserContextUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
@@ -110,6 +112,12 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("原密码输入不正确，请重新输入");
         }
 
+        if (!CommonUtil.validatePassword(request.getPassword())){
+            throw new RuntimeException("密码请以字母开头，并且大于6位");
+        }
+
         sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
+        // 清除缓存
+        LRUCacheUtil.removeUser(userId);
     }
 }

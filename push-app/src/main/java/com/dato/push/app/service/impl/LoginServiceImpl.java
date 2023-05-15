@@ -10,6 +10,7 @@ import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
 import com.dato.push.app.service.intf.LoginService;
 import com.dato.push.app.service.intf.RoleService;
+import com.dato.push.app.utils.CommonUtil;
 import com.dato.push.app.utils.JwtTokenUtil;
 import com.dato.push.app.utils.LRUCacheUtil;
 import com.mybatisflex.core.query.QueryWrapper;
@@ -70,8 +71,9 @@ public class LoginServiceImpl implements LoginService {
     public ResponseResult<NoData> register(RegisterRequest request) {
         String account = request.getAccount();
         String password = request.getPassword();
-        if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
-            return ResponseResult.createError("请传入的账号或密码不为空");
+
+        if (!CommonUtil.validatePassword(request.getPassword())){
+            return ResponseResult.createError("密码请以字母开头，并且大于6位");
         }
 
         QueryWrapper queryWrapper = QueryWrapper.create();
@@ -83,10 +85,10 @@ public class LoginServiceImpl implements LoginService {
         }
 
         sysUser = new SysUser();
-        sysUser.setAccount(request.getAccount());
+        sysUser.setAccount(account);
         sysUser.setName(request.getName());
         sysUser.setRoleKeys(roleService.getRoleKey(1));
-        sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
+        sysUser.setPassword(passwordEncoder.encode(password));
         sysUser.setEnable(true);
 
         sysUserMapper.insert(sysUser);
