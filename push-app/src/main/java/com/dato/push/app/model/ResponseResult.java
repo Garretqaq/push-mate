@@ -1,4 +1,4 @@
-package com.dato.push.app.controller;
+package com.dato.push.app.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -72,7 +72,7 @@ public class ResponseResult<T> {
      *
      * @return 返回值
      */
-    public static ResponseResult<?> createError() {
+    public static ResponseResult<NoData> createError() {
         return new ResponseResult<>(400, null, "请求失败");
     }
 

@@ -1,6 +1,7 @@
 package com.dato.push.app.service;
 
-import com.dato.push.app.controller.ResponseResult;
+import com.dato.push.app.model.NoData;
+import com.dato.push.app.model.ResponseResult;
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
 
@@ -22,12 +23,12 @@ public interface LoginService {
      * 登出
      * @return 结果
      */
-    ResponseResult<?> loginOut();
+    ResponseResult<NoData> loginOut();
 
     /**
      * 注册
      * @param request 请求对象
      * @return 注册结果
      */
-    ResponseResult<?> register(RegisterRequest request);
+    ResponseResult<NoData> register(RegisterRequest request);
 }

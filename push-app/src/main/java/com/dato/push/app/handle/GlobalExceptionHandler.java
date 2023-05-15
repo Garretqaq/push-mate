@@ -1,6 +1,6 @@
 package com.dato.push.app.handle;
 
-import com.dato.push.app.controller.ResponseResult;
+import com.dato.push.app.model.ResponseResult;
 import com.dato.push.app.exception.TokenParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;

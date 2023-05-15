@@ -1,7 +1,11 @@
 package com.dato.push.app.service;
 
+import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
+import com.dato.push.app.model.rep.UserAuthorityResponse;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 /**
  * 用户接口
@@ -23,5 +27,9 @@ public interface UserService {
      */
     SysUser getUserByAccount(String account);
 
-    void authority();
+    /**
+     * 获取用户菜单权限
+     * @return 权限列表
+     */
+    List<SysMenu> authority();
 }

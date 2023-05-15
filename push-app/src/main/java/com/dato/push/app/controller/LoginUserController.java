@@ -1,5 +1,7 @@
 package com.dato.push.app.controller;
 
+import com.dato.push.app.model.NoData;
+import com.dato.push.app.model.ResponseResult;
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
 import com.dato.push.app.service.LoginService;
@@ -31,7 +33,7 @@ public class LoginUserController {
      * 登出接口
      */
     @GetMapping("/loginOut")
-    public ResponseResult<?> loginOut(){
+    public ResponseResult<NoData> loginOut(){
         return loginService.loginOut();
     }
 
@@ -40,7 +42,7 @@ public class LoginUserController {
      */
     @PreAuthorize("hasAnyRole('admin')")
     @PostMapping("/register")
-    public ResponseResult<?> register(@RequestBody @Valid RegisterRequest request){
+    public ResponseResult<NoData> register(@RequestBody @Valid RegisterRequest request){
         return loginService.register(request);
     }
 
@@ -48,7 +50,7 @@ public class LoginUserController {
      * 测试接口
      */
     @GetMapping("/test")
-    public ResponseResult<?> test(){
+    public ResponseResult<NoData> test(){
         return ResponseResult.createSuccess();
     }
 }

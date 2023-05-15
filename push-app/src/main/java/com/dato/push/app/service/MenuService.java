@@ -17,6 +17,13 @@ public interface MenuService {
     List<SysMenu> getAllMenus();
 
     /**
+     * 获取 菜单
+     * @param idList id
+     * @return 菜单
+     */
+    List<SysMenu> getMenusByIds(List<Integer> idList);
+
+    /**
      * 根据菜单获取对应需要的权限
      * @param id 菜单id
      * @return 角色集合，带前缀ROLE_
@@ -28,4 +35,11 @@ public interface MenuService {
      * @return 菜单
      */
     SysMenu getMenuByPath(String path);
+
+    /**
+     * 根据角色获取对应菜单
+     * @param roleKeys 角色keys
+     * @return 菜单
+     */
+    List<SysMenu> getMenuByRoles(List<String> roleKeys);
 }

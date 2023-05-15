@@ -1,6 +1,7 @@
 package com.dato.push.app.service.impl;
 
-import com.dato.push.app.controller.ResponseResult;
+import com.dato.push.app.model.NoData;
+import com.dato.push.app.model.ResponseResult;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.mapper.SysUserMapper;
@@ -57,7 +58,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public ResponseResult<?> loginOut() {
+    public ResponseResult<NoData> loginOut() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginUser loginUser = (LoginUser)authentication.getPrincipal();
 
@@ -66,7 +67,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public ResponseResult<?> register(RegisterRequest request) {
+    public ResponseResult<NoData> register(RegisterRequest request) {
         String account = request.getAccount();
         String password = request.getPassword();
         if (StringUtils.isBlank(account) || StringUtils.isBlank(password)){
