@@ -37,7 +37,7 @@ public class CustomFilterInvocationSecurityMetadataSource implements FilterInvoc
         List<String> permAndRole = new ArrayList<>();
 
         // 菜单所需要的权限
-        String perms = menu.getPerms();
+        String perms = menu.getPermission();
         if (StrUtil.isNotBlank(perms)){
             permAndRole.addAll(StrUtil.split(perms, ","));
         }

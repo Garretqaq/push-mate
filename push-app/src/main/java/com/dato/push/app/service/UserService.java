@@ -22,4 +22,6 @@ public interface UserService {
      * @return 用户实体
      */
     SysUser getUserByAccount(String account);
+
+    void authority();
 }

@@ -23,4 +23,14 @@ public class UserAuthorityResponse {
      */
     private String url;
 
+    /**
+     * 权限编码
+     */
+    private String permission;
+
+    /**
+     * 图片url
+     */
+    private String link;
+
 }

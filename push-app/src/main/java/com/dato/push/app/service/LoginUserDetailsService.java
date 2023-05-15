@@ -86,7 +86,7 @@ public class LoginUserDetailsService implements UserDetailsService {
 
         List<String> permissionList = new ArrayList<>();
         for (SysMenu sysMenu : sysMenuList) {
-            String perms = sysMenu.getPerms();
+            String perms = sysMenu.getPermission();
             if (StringUtils.isNotBlank(perms)){
                 // 获取菜单所需要的权限
                 List<String> permsList = StrUtil.split(perms, ",");

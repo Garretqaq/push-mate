@@ -51,4 +51,9 @@ public class UserServiceImpl implements UserService {
         query.where(SYS_USER.ACCOUNT.eq(account));
         return sysUserMapper.selectOneByQuery(query);
     }
+
+    @Override
+    public void authority() {
+
+    }
 }
