@@ -7,12 +7,9 @@ import com.dato.push.app.dao.SysRoleMenu;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.mapper.SysMenuMapper;
 import com.dato.push.app.mapper.SysRoleMenuMapper;
-import com.dato.push.app.model.LoginUser;
-import com.dato.push.app.service.MenuService;
-import com.dato.push.app.service.RoleService;
-import com.dato.push.app.utils.UserContextUtil;
+import com.dato.push.app.service.intf.MenuService;
+import com.dato.push.app.service.intf.RoleService;
 import com.mybatisflex.core.query.QueryWrapper;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

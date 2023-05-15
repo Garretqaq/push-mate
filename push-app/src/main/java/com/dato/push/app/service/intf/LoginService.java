@@ -1,4 +1,4 @@
-package com.dato.push.app.service;
+package com.dato.push.app.service.intf;
 
 import com.dato.push.app.model.NoData;
 import com.dato.push.app.model.ResponseResult;

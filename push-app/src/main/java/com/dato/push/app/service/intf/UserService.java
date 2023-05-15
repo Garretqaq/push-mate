@@ -1,7 +1,8 @@
-package com.dato.push.app.service;
+package com.dato.push.app.service.intf;
 
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
+import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.rep.UserAuthorityResponse;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -32,4 +33,13 @@ public interface UserService {
      * @return 权限列表
      */
     List<SysMenu> authority();
+
+    /**
+     * 获取用户
+     * @param id id
+     * @return 用户
+     */
+    SysUser getById(Integer id);
+
+    SysUserMapper getMapper();
 }

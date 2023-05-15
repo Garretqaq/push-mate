@@ -4,7 +4,7 @@ import com.dato.push.app.model.NoData;
 import com.dato.push.app.model.ResponseResult;
 import com.dato.push.app.model.req.LoginUserRequest;
 import com.dato.push.app.model.req.RegisterRequest;
-import com.dato.push.app.service.LoginService;
+import com.dato.push.app.service.intf.LoginService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

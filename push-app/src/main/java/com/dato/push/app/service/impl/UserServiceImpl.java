@@ -3,13 +3,11 @@ package com.dato.push.app.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
-import com.dato.push.app.mapper.SysRoleMenuMapper;
 import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
-import com.dato.push.app.model.rep.UserAuthorityResponse;
-import com.dato.push.app.service.MenuService;
-import com.dato.push.app.service.RoleService;
-import com.dato.push.app.service.UserService;
+import com.dato.push.app.service.intf.MenuService;
+import com.dato.push.app.service.intf.RoleService;
+import com.dato.push.app.service.intf.UserService;
 import com.dato.push.app.utils.UserContextUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
@@ -32,9 +30,6 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
-
-    @Resource
-    private RoleService roleService;
 
     @Resource
     private MenuService menuService;
@@ -80,5 +75,17 @@ public class UserServiceImpl implements UserService {
         // 菜单列表
         return menuService.getMenuByRoles(StrUtil.split(roleKeys, ","));
 
+    }
+
+    @Override
+    public SysUser getById(Integer id) {
+        QueryWrapper query = QueryWrapper.create();
+        query.where(SYS_USER.ID.eq(id));
+        return sysUserMapper.selectOneByQuery(query);
+    }
+
+    @Override
+    public SysUserMapper getMapper() {
+        return this.sysUserMapper;
     }
 }

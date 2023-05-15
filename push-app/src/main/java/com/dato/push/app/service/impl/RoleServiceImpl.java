@@ -1,12 +1,10 @@
 package com.dato.push.app.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysRole;
 import com.dato.push.app.mapper.SysRoleMapper;
-import com.dato.push.app.service.RoleService;
+import com.dato.push.app.service.intf.RoleService;
 import com.mybatisflex.core.query.QueryWrapper;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -42,5 +40,10 @@ public class RoleServiceImpl implements RoleService {
         }else {
             return roleList.stream().map(SysRole::getId).collect(Collectors.toList());
         }
+    }
+
+    @Override
+    public SysRoleMapper getMapper() {
+        return this.sysRoleMapper;
     }
 }

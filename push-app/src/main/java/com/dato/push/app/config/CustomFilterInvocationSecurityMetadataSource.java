@@ -2,7 +2,7 @@ package com.dato.push.app.config;
 
 import cn.hutool.core.util.StrUtil;
 import com.dato.push.app.dao.SysMenu;
-import com.dato.push.app.service.MenuService;
+import com.dato.push.app.service.intf.MenuService;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;

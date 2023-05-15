@@ -1,5 +1,7 @@
-package com.dato.push.app.service;
+package com.dato.push.app.service.intf;
 
+
+import com.dato.push.app.mapper.SysRoleMapper;
 
 import java.util.List;
 
@@ -22,4 +24,10 @@ public interface RoleService {
      * @return roleId
      */
     List<Integer> getIdByRoleKeys(List<String> roleKeys);
+
+    /**
+     * 获取mapper对象
+     * @return mapper
+     */
+    SysRoleMapper getMapper();
 }
