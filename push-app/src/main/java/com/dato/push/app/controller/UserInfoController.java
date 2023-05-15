@@ -2,12 +2,15 @@ package com.dato.push.app.controller;
 
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.model.ResponseResult;
+import com.dato.push.app.model.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -27,4 +30,12 @@ public class UserInfoController {
         return ResponseResult.createSuccess(userService.authority());
     }
 
+    /**
+     * 用户更改密码
+     */
+    @PostMapping("/update/password")
+    public ResponseResult<List<SysMenu>> updatePassword(@RequestBody @Valid UpdatePasswordRequest request){
+        userService.updatePassword(request);
+        return ResponseResult.createSuccess();
+    }
 }

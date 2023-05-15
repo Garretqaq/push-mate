@@ -1,16 +1,18 @@
 package com.dato.push.app.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.MenuService;
-import com.dato.push.app.service.intf.RoleService;
 import com.dato.push.app.service.intf.UserService;
 import com.dato.push.app.utils.UserContextUtil;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private MenuService menuService;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void initAdmin(String account, String password, PasswordEncoder passwordEncoder) {
@@ -87,5 +91,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public SysUserMapper getMapper() {
         return this.sysUserMapper;
+    }
+
+    @Override
+    public void updatePassword(UpdatePasswordRequest request) {
+        Integer userId = request.getUserId();
+
+        LoginUser currentUser = UserContextUtil.getCurrentUser();
+        // 不是本人 而且也不是 管理员
+        if (!currentUser.getId().equals(userId) && !UserContextUtil.whetherAdmin(currentUser)){
+            throw new AccessDeniedException("拒绝访问该接口, 请向管理员申请权限");
+        }
+
+        SysUser sysUser = BeanUtil.copyProperties(currentUser, SysUser.class);
+
+        if (!passwordEncoder.matches(request.getPassword(), sysUser.getPassword())){
+            // 不匹配
+            throw new RuntimeException("原密码输入不正确，请重新输入");
+        }
+
+        sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
     }
 }

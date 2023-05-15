@@ -4,6 +4,7 @@ import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.rep.UserAuthorityResponse;
+import com.dato.push.app.model.req.UpdatePasswordRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
@@ -42,4 +43,10 @@ public interface UserService {
     SysUser getById(Integer id);
 
     SysUserMapper getMapper();
+
+    /**
+     * 修改密码
+     * @param request 请求对象
+     */
+    void updatePassword(UpdatePasswordRequest request);
 }
