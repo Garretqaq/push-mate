@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Objects;
 
 @Service
@@ -89,6 +90,7 @@ public class LoginServiceImpl implements LoginService {
         sysUser.setName(request.getName());
         sysUser.setRoleKeys(roleService.getRoleKey(1));
         sysUser.setPassword(passwordEncoder.encode(password));
+        sysUser.setCreatTime(new Date());
         sysUser.setEnable(true);
 
         sysUserMapper.insert(sysUser);

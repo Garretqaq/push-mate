@@ -40,7 +40,6 @@ public class LoginUserController {
     /**
      * 注册接口
      */
-    @PreAuthorize("hasAnyRole('admin')")
     @PostMapping("/register")
     public ResponseResult<NoData> register(@RequestBody @Valid RegisterRequest request){
         return loginService.register(request);

@@ -2,6 +2,7 @@ package com.dato.push.app.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.spring.SpringUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysUserMapper;
@@ -37,8 +38,6 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private MenuService menuService;
-    @Resource
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public void initAdmin(String account, String password, PasswordEncoder passwordEncoder) {
@@ -99,6 +98,7 @@ public class UserServiceImpl implements UserService {
     public void updatePassword(UpdatePasswordRequest request) {
         Integer userId = request.getUserId();
 
+        PasswordEncoder passwordEncoder = SpringUtil.getBean("passwordEncoder");
         LoginUser currentUser = UserContextUtil.getCurrentUser();
         // 不是本人 而且也不是 管理员
         if (!currentUser.getId().equals(userId) && !UserContextUtil.whetherAdmin(currentUser)){
