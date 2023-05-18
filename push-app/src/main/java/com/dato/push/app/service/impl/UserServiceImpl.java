@@ -7,6 +7,7 @@ import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.rep.UserInfoResponse;
 import com.dato.push.app.model.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.MenuService;
 import com.dato.push.app.service.intf.UserService;
@@ -119,5 +120,15 @@ public class UserServiceImpl implements UserService {
         sysUser.setPassword(passwordEncoder.encode(request.getPassword()));
         // 清除缓存
         LRUCacheUtil.removeUser(userId);
+    }
+
+    @Override
+    public UserInfoResponse getUserInfo() {
+        LoginUser currentUser = UserContextUtil.getCurrentUser();
+
+        UserInfoResponse rsp = new UserInfoResponse();
+        rsp.setName(currentUser.getName());
+        rsp.setAccount(currentUser.getAccount());
+        return rsp;
     }
 }
