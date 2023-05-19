@@ -34,7 +34,7 @@
                              type="XMLMAPPER"/>
 
         <!--为哪张表生成代码-->
-        <table tableName="push_platform_config">
+        <table tableName="push_platform_config_value">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
     </context>
