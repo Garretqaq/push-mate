@@ -1,4 +1,4 @@
-package com.dato.push.app.mapper;
+package com.dato.push.app.dao.mapper;
 
 import com.dato.push.app.dao.SysUser;
 import com.mybatisflex.core.BaseMapper;

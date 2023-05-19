@@ -1,7 +1,7 @@
 package com.dato.push.app.service.intf;
 
 
-import com.dato.push.app.mapper.SysRoleMapper;
+import com.dato.push.app.dao.mapper.SysRoleMapper;
 
 import java.util.List;
 

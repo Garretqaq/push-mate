@@ -1,7 +1,7 @@
 package com.dato.push.app.user;
 
 import com.dato.push.app.PushAppApplicationTests;
-import com.dato.push.app.mapper.SysUserMapper;
+import com.dato.push.app.dao.mapper.SysUserMapper;
 import com.dato.push.app.dao.SysUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;

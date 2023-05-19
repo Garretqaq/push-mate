@@ -22,19 +22,19 @@
         </jdbcConnection>
 
         <!--实体-->
-        <javaModelGenerator targetPackage="com.dato.push.app.model"
+        <javaModelGenerator targetPackage="com.dato.push.app.dao"
                             targetProject="src/main/java"/>
 
         <!--mapper.xml-->
         <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources"/>
         <!--mapper接口-->
-        <javaClientGenerator targetPackage="com.dato.push.app.mapper"
+        <javaClientGenerator targetPackage="com.dato.push.app.dao.mapper"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
         <!--为哪张表生成代码-->
-        <table tableName="sys_role_menu">
+        <table tableName="push_platform_config">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
     </context>

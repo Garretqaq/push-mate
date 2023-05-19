@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
-import com.dato.push.app.mapper.SysUserMapper;
+import com.dato.push.app.dao.mapper.SysUserMapper;
 import com.dato.push.app.model.LoginUser;
 import com.dato.push.app.model.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.MenuService;
