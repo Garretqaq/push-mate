@@ -2,6 +2,8 @@ package com.dato.push.app.service.intf;
 
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
+import com.dato.push.app.model.rep.UserAuthorityResponse;
+import com.dato.push.app.model.rep.UserInfoResponse;
 import com.dato.push.app.dao.mapper.SysUserMapper;
 import com.dato.push.app.model.req.UpdatePasswordRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,4 +50,10 @@ public interface UserService {
      * @param request 请求对象
      */
     void updatePassword(UpdatePasswordRequest request);
+
+    /**
+     * 获取当前用户登录信息
+     * @return 用户
+     */
+    UserInfoResponse getUserInfo();
 }
