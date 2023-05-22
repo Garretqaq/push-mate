@@ -1,4 +1,4 @@
-package com.dato.push.app.model.system.rep;
+package com.dato.push.app.model.system.rsp;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

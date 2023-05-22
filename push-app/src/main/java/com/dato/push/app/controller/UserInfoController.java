@@ -2,7 +2,7 @@ package com.dato.push.app.controller;
 
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.model.common.ResponseResult;
-import com.dato.push.app.model.system.rep.UserInfoResponse;
+import com.dato.push.app.model.system.rsp.UserInfoResponse;
 import com.dato.push.app.model.system.req.UpdatePasswordRequest;
 import com.dato.push.app.service.intf.UserService;
 import org.springframework.web.bind.annotation.*;
