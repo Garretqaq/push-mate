@@ -1,7 +1,7 @@
 package com.dato.push.app.dao.mapper;
 
 import com.dato.push.app.dao.PushPlatformConfigValue;
-import tk.mybatis.mapper.common.Mapper;
+import com.mybatisflex.core.BaseMapper;
 
-public interface PushPlatformConfigValueMapper extends Mapper<PushPlatformConfigValue> {
+public interface PushPlatformConfigValueMapper extends BaseMapper<PushPlatformConfigValue> {
 }
