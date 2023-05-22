@@ -1,4 +1,5 @@
-package com.dato.push.app.model.req;
+package com.dato.push.app.model.system.req;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,17 +7,12 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 注册请求对象
+ * 登录请求对象
  * @author sgz
  */
 @Getter
 @Setter
-public class RegisterRequest {
-    /**
-     * 名称
-     */
-    @NotBlank(message = "名称不能为空")
-    private String name;
+public class LoginUserRequest {
 
     /**
      * 账户

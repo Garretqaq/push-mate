@@ -2,7 +2,7 @@ package com.dato.push.app.config;
 
 import cn.hutool.extra.spring.SpringUtil;
 import com.dato.push.app.exception.TokenParseException;
-import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.common.LoginUser;
 import com.dato.push.app.utils.JwtTokenUtil;
 import com.dato.push.app.utils.LRUCacheUtil;
 import org.springframework.beans.factory.annotation.Qualifier;

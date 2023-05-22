@@ -3,7 +3,7 @@ package com.dato.push.app.utils;
 import cn.hutool.cache.Cache;
 import cn.hutool.cache.CacheUtil;
 import cn.hutool.core.date.DateUnit;
-import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.common.LoginUser;
 
 /**
  * lru缓存工具类

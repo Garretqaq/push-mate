@@ -1,13 +1,13 @@
 package com.dato.push.app.service.impl;
 
-import com.dato.push.app.model.NoData;
-import com.dato.push.app.model.ResponseResult;
+import com.dato.push.app.model.common.NoData;
+import com.dato.push.app.model.common.ResponseResult;
 import com.dato.push.app.dao.SysUser;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.dao.mapper.SysUserMapper;
-import com.dato.push.app.model.LoginUser;
-import com.dato.push.app.model.req.LoginUserRequest;
-import com.dato.push.app.model.req.RegisterRequest;
+import com.dato.push.app.model.common.LoginUser;
+import com.dato.push.app.model.system.req.LoginUserRequest;
+import com.dato.push.app.model.system.req.RegisterRequest;
 import com.dato.push.app.service.intf.LoginService;
 import com.dato.push.app.service.intf.RoleService;
 import com.dato.push.app.utils.CommonUtil;

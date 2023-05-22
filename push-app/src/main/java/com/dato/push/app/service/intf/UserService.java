@@ -2,10 +2,9 @@ package com.dato.push.app.service.intf;
 
 import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.dao.SysUser;
-import com.dato.push.app.model.rep.UserAuthorityResponse;
-import com.dato.push.app.model.rep.UserInfoResponse;
+import com.dato.push.app.model.system.rep.UserInfoResponse;
 import com.dato.push.app.dao.mapper.SysUserMapper;
-import com.dato.push.app.model.req.UpdatePasswordRequest;
+import com.dato.push.app.model.system.req.UpdatePasswordRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.dato.push.app.service.intf;
 
 import com.dato.push.app.dao.PushPlatform;
-import com.dato.push.app.model.ResponseResult;
 
 import java.util.List;
 

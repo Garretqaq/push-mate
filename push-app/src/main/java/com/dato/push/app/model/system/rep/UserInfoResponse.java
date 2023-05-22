@@ -1,15 +1,16 @@
-package com.dato.push.app.model.req;
+package com.dato.push.app.model.system.rep;
 
-import com.dato.push.app.model.PageCommonRequest;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 用户信息返回
+ */
 @Getter
 @Setter
-public class UserDetailRequest extends PageCommonRequest {
-
+public class UserInfoResponse {
     /**
-     * 用户名
+     * 名字
      */
     private String name;
 

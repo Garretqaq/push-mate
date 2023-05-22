@@ -20,6 +20,11 @@ public class PushPlatformConfig {
     private Long id;
 
     /**
+     * 配置名
+     */
+    private String configName;
+
+    /**
      * 平台
      */
     private String platform;

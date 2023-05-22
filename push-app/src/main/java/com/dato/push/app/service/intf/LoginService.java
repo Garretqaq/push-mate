@@ -1,9 +1,9 @@
 package com.dato.push.app.service.intf;
 
-import com.dato.push.app.model.NoData;
-import com.dato.push.app.model.ResponseResult;
-import com.dato.push.app.model.req.LoginUserRequest;
-import com.dato.push.app.model.req.RegisterRequest;
+import com.dato.push.app.model.common.NoData;
+import com.dato.push.app.model.common.ResponseResult;
+import com.dato.push.app.model.system.req.LoginUserRequest;
+import com.dato.push.app.model.system.req.RegisterRequest;
 
 /**
  * 登录接口

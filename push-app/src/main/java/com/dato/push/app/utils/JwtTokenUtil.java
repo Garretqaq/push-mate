@@ -7,7 +7,7 @@ import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import com.dato.push.app.exception.TokenParseException;
-import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.common.LoginUser;
 
 import java.io.IOException;
 import java.io.InputStream;

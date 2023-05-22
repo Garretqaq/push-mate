@@ -1,4 +1,4 @@
-package com.dato.push.app.model;
+package com.dato.push.app.model.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

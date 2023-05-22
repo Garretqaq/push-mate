@@ -1,6 +1,6 @@
 package com.dato.push.app.utils;
 
-import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.common.LoginUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;

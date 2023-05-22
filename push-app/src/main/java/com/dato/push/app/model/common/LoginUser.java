@@ -1,4 +1,4 @@
-package com.dato.push.app.model;
+package com.dato.push.app.model.common;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;

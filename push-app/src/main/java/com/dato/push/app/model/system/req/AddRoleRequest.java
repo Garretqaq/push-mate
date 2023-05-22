@@ -1,4 +1,4 @@
-package com.dato.push.app.model.req;
+package com.dato.push.app.model.system.req;
 
 
 import lombok.Getter;

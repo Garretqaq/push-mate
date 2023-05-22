@@ -1,7 +1,7 @@
 package com.dato.push.app.controller;
 
 import com.dato.push.app.dao.PushPlatform;
-import com.dato.push.app.model.ResponseResult;
+import com.dato.push.app.model.common.ResponseResult;
 import com.dato.push.app.service.intf.PushPlatformService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,4 +26,8 @@ public class PushPlatformController {
         List<PushPlatform> rspList = pushPlatformService.list();
         return ResponseResult.createSuccess(rspList);
     }
+
+    /**
+     * 获取用户配置的推送配置
+     */
 }

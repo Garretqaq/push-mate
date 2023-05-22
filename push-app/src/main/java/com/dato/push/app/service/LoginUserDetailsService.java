@@ -10,7 +10,7 @@ import com.dato.push.app.exception.UnregisteredException;
 import com.dato.push.app.dao.mapper.SysMenuMapper;
 import com.dato.push.app.dao.mapper.SysRoleMapper;
 import com.dato.push.app.dao.mapper.SysRoleMenuMapper;
-import com.dato.push.app.model.LoginUser;
+import com.dato.push.app.model.common.LoginUser;
 import com.dato.push.app.service.intf.UserService;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
