@@ -1,7 +1,9 @@
 package com.dato.push.app.dao;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import com.mybatisflex.annotation.Id;
+import com.mybatisflex.annotation.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,31 +11,27 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Table(name = "push_platform_config_value")
+@Table("push_platform_config_value")
 public class PushPlatformConfigValue {
     /**
      * 主键
      */
     @Id
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
      * 创建时间
      */
-    @Column(name = "update_time")
     private Date updateTime;
 
     /**
      * 更新时间
      */
-    @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 所属配置id
      */
-    @Column(name = "config_id")
     private Long configId;
 
     /**
@@ -49,6 +47,5 @@ public class PushPlatformConfigValue {
     /**
      * 创建人
      */
-    @Column(name = "user_id")
     private Integer userId;
 }
