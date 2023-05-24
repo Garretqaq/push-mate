@@ -1,4 +1,4 @@
-package com.dato.push.app.service.intf;
+package com.dato.push.app.service.system.intf;
 
 
 import com.dato.push.app.dao.mapper.SysRoleMapper;

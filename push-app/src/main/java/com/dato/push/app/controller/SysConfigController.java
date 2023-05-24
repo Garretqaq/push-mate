@@ -9,7 +9,7 @@ import com.dato.push.app.model.system.req.AddRoleRequest;
 import com.dato.push.app.model.system.req.AuthMenuRequest;
 import com.dato.push.app.model.system.req.AuthRoleRequest;
 import com.dato.push.app.model.system.req.UserDetailRequest;
-import com.dato.push.app.service.intf.SysConfigService;
+import com.dato.push.app.service.system.intf.SysConfigService;
 import com.mybatisflex.core.paginate.Page;
 import org.springframework.web.bind.annotation.*;
 

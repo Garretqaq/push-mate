@@ -1,8 +1,9 @@
-package com.dato.push.app.controller;
+package com.dato.push.app.controller.platform;
 
 import com.dato.push.app.dao.PushPlatform;
 import com.dato.push.app.model.common.ResponseResult;
-import com.dato.push.app.service.intf.PushPlatformService;
+import com.dato.push.app.service.platform.PushPlatformService;
+import com.dato.push.app.service.platform.intf.PushPlatformService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,4 +31,7 @@ public class PushPlatformController {
     /**
      * 获取用户配置的推送配置
      */
+    public ResponseResult<List<PushPlatform>> userList(){
+        return null;
+    }
 }

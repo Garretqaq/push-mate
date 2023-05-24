@@ -1,4 +1,4 @@
-package com.dato.push.app.service.impl;
+package com.dato.push.app.service.system.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
@@ -7,8 +7,8 @@ import com.dato.push.app.dao.SysRoleMenu;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.dao.mapper.SysMenuMapper;
 import com.dato.push.app.dao.mapper.SysRoleMenuMapper;
-import com.dato.push.app.service.intf.MenuService;
-import com.dato.push.app.service.intf.RoleService;
+import com.dato.push.app.service.system.intf.MenuService;
+import com.dato.push.app.service.system.intf.RoleService;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.springframework.stereotype.Service;
 

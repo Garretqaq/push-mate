@@ -4,7 +4,7 @@ import com.dato.push.app.dao.SysMenu;
 import com.dato.push.app.model.common.ResponseResult;
 import com.dato.push.app.model.system.rsp.UserInfoResponse;
 import com.dato.push.app.model.system.req.UpdatePasswordRequest;
-import com.dato.push.app.service.intf.UserService;
+import com.dato.push.app.service.system.intf.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

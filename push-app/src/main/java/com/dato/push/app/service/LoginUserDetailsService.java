@@ -11,7 +11,7 @@ import com.dato.push.app.dao.mapper.SysMenuMapper;
 import com.dato.push.app.dao.mapper.SysRoleMapper;
 import com.dato.push.app.dao.mapper.SysRoleMenuMapper;
 import com.dato.push.app.model.common.LoginUser;
-import com.dato.push.app.service.intf.UserService;
+import com.dato.push.app.service.system.intf.UserService;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.userdetails.UserDetails;

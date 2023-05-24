@@ -1,4 +1,4 @@
-package com.dato.push.app.service.impl;
+package com.dato.push.app.service.system.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.dato.push.app.dao.SysMenu;
@@ -13,9 +13,9 @@ import com.dato.push.app.model.system.req.AddRoleRequest;
 import com.dato.push.app.model.system.req.AuthMenuRequest;
 import com.dato.push.app.model.system.req.AuthRoleRequest;
 import com.dato.push.app.model.system.req.UserDetailRequest;
-import com.dato.push.app.service.intf.RoleService;
-import com.dato.push.app.service.intf.SysConfigService;
-import com.dato.push.app.service.intf.UserService;
+import com.dato.push.app.service.system.intf.RoleService;
+import com.dato.push.app.service.system.intf.SysConfigService;
+import com.dato.push.app.service.system.intf.UserService;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;

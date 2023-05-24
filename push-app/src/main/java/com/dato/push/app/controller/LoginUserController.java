@@ -4,7 +4,7 @@ import com.dato.push.app.model.common.NoData;
 import com.dato.push.app.model.common.ResponseResult;
 import com.dato.push.app.model.system.req.LoginUserRequest;
 import com.dato.push.app.model.system.req.RegisterRequest;
-import com.dato.push.app.service.intf.LoginService;
+import com.dato.push.app.service.system.intf.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

@@ -1,4 +1,4 @@
-package com.dato.push.app.service.impl;
+package com.dato.push.app.service.system.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
@@ -9,8 +9,8 @@ import com.dato.push.app.dao.mapper.SysUserMapper;
 import com.dato.push.app.model.common.LoginUser;
 import com.dato.push.app.model.system.rsp.UserInfoResponse;
 import com.dato.push.app.model.system.req.UpdatePasswordRequest;
-import com.dato.push.app.service.intf.MenuService;
-import com.dato.push.app.service.intf.UserService;
+import com.dato.push.app.service.system.intf.MenuService;
+import com.dato.push.app.service.system.intf.UserService;
 import com.dato.push.app.utils.CommonUtil;
 import com.dato.push.app.utils.LRUCacheUtil;
 import com.dato.push.app.utils.UserContextUtil;

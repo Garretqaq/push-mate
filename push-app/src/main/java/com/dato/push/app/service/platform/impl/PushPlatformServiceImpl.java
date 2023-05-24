@@ -1,8 +1,8 @@
-package com.dato.push.app.service.impl;
+package com.dato.push.app.service.platform.impl;
 
 import com.dato.push.app.dao.PushPlatform;
 import com.dato.push.app.dao.mapper.PushPlatformMapper;
-import com.dato.push.app.service.intf.PushPlatformService;
+import com.dato.push.app.service.platform.intf.PushPlatformService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

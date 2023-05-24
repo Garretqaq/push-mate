@@ -1,4 +1,4 @@
-package com.dato.push.app.service.impl;
+package com.dato.push.app.service.system.impl;
 
 import com.dato.push.app.model.common.NoData;
 import com.dato.push.app.model.common.ResponseResult;
@@ -8,8 +8,8 @@ import com.dato.push.app.dao.mapper.SysUserMapper;
 import com.dato.push.app.model.common.LoginUser;
 import com.dato.push.app.model.system.req.LoginUserRequest;
 import com.dato.push.app.model.system.req.RegisterRequest;
-import com.dato.push.app.service.intf.LoginService;
-import com.dato.push.app.service.intf.RoleService;
+import com.dato.push.app.service.system.intf.LoginService;
+import com.dato.push.app.service.system.intf.RoleService;
 import com.dato.push.app.utils.CommonUtil;
 import com.dato.push.app.utils.JwtTokenUtil;
 import com.dato.push.app.utils.LRUCacheUtil;
