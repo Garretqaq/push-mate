@@ -1,9 +1,13 @@
 package com.dato.push.app.controller.platform;
 
 import com.dato.push.app.dao.PushPlatform;
+import com.dato.push.app.model.common.NoData;
+import com.dato.push.app.model.common.PageCommonResponse;
 import com.dato.push.app.model.common.ResponseResult;
-import com.dato.push.app.service.platform.PushPlatformService;
+import com.dato.push.app.model.platform.req.UserPlatFormConfigRequest;
+import com.dato.push.app.model.platform.rsp.UserPlatFormConfigResponse;
 import com.dato.push.app.service.platform.intf.PushPlatformService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -31,7 +35,18 @@ public class PushPlatformController {
     /**
      * 获取用户配置的推送配置
      */
-    public ResponseResult<List<PushPlatform>> userList(){
-        return null;
+    @PostMapping("/user/list")
+    public ResponseResult<PageCommonResponse<UserPlatFormConfigResponse>> userConfig(@RequestBody @Validated UserPlatFormConfigRequest request){
+        PageCommonResponse<UserPlatFormConfigResponse> rspPage = pushPlatformService.userConfig(request);
+        return ResponseResult.createSuccess(rspPage);
+    }
+
+    /**
+     * 删除用户配置的推送配置
+     */
+    @DeleteMapping("/user/delete")
+    public ResponseResult<NoData> userDelete(@RequestParam Long id){
+        pushPlatformService.userDelete(id);
+        return ResponseResult.createSuccess();
     }
 }

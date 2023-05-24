@@ -13,10 +13,10 @@ public abstract class AbstractPageRequest {
     /**
      * 分页索引
      */
-    private Integer pageIndex;
+    private Integer pageIndex = 1;
 
     /**
      * 分页大小
      */
-    private Integer pageSize;
+    private Integer pageSize = 10;
 }
