@@ -98,6 +98,6 @@ public class SysConfigServiceImpl implements SysConfigService {
         QueryWrapper query = new QueryWrapper();
         query.where(SYS_USER.NAME.likeRight(request.getName()))
                 .where(SYS_USER.ACCOUNT.likeRight(request.getAccount()));
-        return userService.getMapper().paginate(request.getPageNumber(), request.getPageSize(), query);
+        return userService.getMapper().paginate(request.getPageIndex(), request.getPageSize(), query);
     }
 }
