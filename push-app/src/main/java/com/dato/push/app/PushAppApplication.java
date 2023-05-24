@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
-@MapperScan("com.dato.push.app.mapper")
+@MapperScan("com.dato.push.app.dao.mapper")
 @Configuration
 public class PushAppApplication {
 
