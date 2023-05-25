@@ -24,6 +24,17 @@ public class UserContextUtil {
     }
 
     /**
+     * 获取当前用户Id
+     * @return 用户信息
+     */
+    public static Integer getCurrentUserId(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        return loginUser.getId();
+    }
+
+
+    /**
      * 判断用户是否为管理员
      * @return 用户信息
      */

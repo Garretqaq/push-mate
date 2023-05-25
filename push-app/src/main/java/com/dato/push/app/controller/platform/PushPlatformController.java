@@ -4,6 +4,7 @@ import com.dato.push.app.dao.PushPlatform;
 import com.dato.push.app.model.common.NoData;
 import com.dato.push.app.model.common.PageCommonResponse;
 import com.dato.push.app.model.common.ResponseResult;
+import com.dato.push.app.model.platform.req.AddPlatFormConfigRequest;
 import com.dato.push.app.model.platform.req.UserPlatFormConfigRequest;
 import com.dato.push.app.model.platform.rsp.UserPlatFormConfigResponse;
 import com.dato.push.app.service.platform.intf.PushPlatformService;
@@ -35,7 +36,7 @@ public class PushPlatformController {
     /**
      * 获取用户配置的推送配置
      */
-    @PostMapping("/user/list")
+    @PostMapping("/config/list")
     public ResponseResult<PageCommonResponse<UserPlatFormConfigResponse>> userConfig(@RequestBody @Validated UserPlatFormConfigRequest request){
         PageCommonResponse<UserPlatFormConfigResponse> rspPage = pushPlatformService.userConfig(request);
         return ResponseResult.createSuccess(rspPage);
@@ -44,9 +45,18 @@ public class PushPlatformController {
     /**
      * 删除用户配置的推送配置
      */
-    @DeleteMapping("/user/delete")
+    @DeleteMapping("/config/delete")
     public ResponseResult<NoData> userDelete(@RequestParam Long id){
         pushPlatformService.userDelete(id);
+        return ResponseResult.createSuccess();
+    }
+
+    /**
+     * 增加用户配置的推送配置
+     */
+    @PutMapping("/config/add")
+    public ResponseResult<NoData> addConfig(@RequestBody @Validated AddPlatFormConfigRequest request){
+        pushPlatformService.addConfig(request);
         return ResponseResult.createSuccess();
     }
 }

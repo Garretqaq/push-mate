@@ -32,7 +32,7 @@ public class PushPlatformConfig {
     /**
      * 用户id
      */
-    private String userId;
+    private Integer userId;
 
     /**
      * 创建时间

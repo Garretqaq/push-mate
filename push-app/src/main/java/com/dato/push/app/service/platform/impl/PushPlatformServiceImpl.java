@@ -7,15 +7,18 @@ import com.dato.push.app.dao.mapper.PushPlatformConfigMapper;
 import com.dato.push.app.dao.mapper.PushPlatformMapper;
 import com.dato.push.app.dao.table.Tables;
 import com.dato.push.app.model.common.PageCommonResponse;
+import com.dato.push.app.model.platform.req.AddPlatFormConfigRequest;
 import com.dato.push.app.model.platform.req.UserPlatFormConfigRequest;
 import com.dato.push.app.model.platform.rsp.UserPlatFormConfigResponse;
 import com.dato.push.app.service.platform.intf.PushPlatformService;
+import com.dato.push.app.utils.UserContextUtil;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,5 +54,13 @@ public class PushPlatformServiceImpl implements PushPlatformService {
     @Override
     public void userDelete(Long id) {
         pushPlatformConfigMapper.deleteById(id);
+    }
+
+    @Override
+    public void addConfig(AddPlatFormConfigRequest request) {
+        PushPlatformConfig config = BeanUtil.copyProperties(request, PushPlatformConfig.class);
+        config.setCreateTime(new Date());
+        config.setUserId(UserContextUtil.getCurrentUserId());
+        pushPlatformConfigMapper.insert(config);
     }
 }

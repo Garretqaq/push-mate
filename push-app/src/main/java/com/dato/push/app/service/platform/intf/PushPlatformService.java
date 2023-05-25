@@ -2,6 +2,7 @@ package com.dato.push.app.service.platform.intf;
 
 import com.dato.push.app.dao.PushPlatform;
 import com.dato.push.app.model.common.PageCommonResponse;
+import com.dato.push.app.model.platform.req.AddPlatFormConfigRequest;
 import com.dato.push.app.model.platform.req.UserPlatFormConfigRequest;
 import com.dato.push.app.model.platform.rsp.UserPlatFormConfigResponse;
 
@@ -31,4 +32,10 @@ public interface PushPlatformService {
      * @param id id
      */
     void userDelete(Long id);
+
+    /**
+     * 添加用户平台配置的推送配置
+     * @param request 请求
+     */
+    void addConfig(AddPlatFormConfigRequest request);
 }
